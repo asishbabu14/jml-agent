@@ -29,7 +29,7 @@ sequenceDiagram
 |---|---|---|
 | Identity | `OktaMockAdapter` (`MOCK`) | `OktaLiveAdapter` when `OKTA_ORG_URL`, `OKTA_CLIENT_ID`, and `OKTA_PRIVATE_KEY_PATH` are all set |
 | Google Workspace | `GoogleWorkspaceMock` (`MOCK`) | none |
-| Devices | `IruStyleDeviceMock` (`MOCK:iru-style`) | none |
+| Devices | `DeviceInventoryMock` (`MOCK:device-inventory`) | none |
 | Tickets | SQLite (`MOCK`) | none |
 
 A partial Okta configuration refuses to start. The service will not silently keep the mock while some live variables are set.

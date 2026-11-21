@@ -9,7 +9,7 @@ from slack_bot.intents import apply_decision, classify, handle_message
 
 
 def test_help_desk_deflects_a_runbook_and_routes_the_rest(service: ITOpsService) -> None:
-    how_to = handle_message(service, "I can't get into Notion", "casey.nguyen@lab.example")
+    how_to = handle_message(service, "I can't get into the wiki", "casey.nguyen@lab.example")
     assert how_to["intent"] == "how_to"
     assert how_to["result"]["outcome"] == "deflected"
     device = handle_message(service, "is my laptop compliant", "riley.chen@lab.example")
@@ -23,14 +23,14 @@ def test_help_desk_deflects_a_runbook_and_routes_the_rest(service: ITOpsService)
 def test_apply_decision_executes_only_after_approval(service: ITOpsService) -> None:
     requested = service.request_group_access(
         "casey.nguyen@lab.example",
-        "app-notion",
+        "app-wiki",
         "Needs the lab wiki",
         actor="casey.nguyen@lab.example",
     )
     outcome = apply_decision(service, requested["approval_id"], "morgan.lee@lab.example", "it", "approve")
     assert outcome["execution"]["executed"] is True
     groups = service.list_user_groups("casey.nguyen@lab.example", actor="it-agent@lab.example")["groups"]
-    assert "app-notion" in groups
+    assert "app-wiki" in groups
 
 
 def test_metrics_math(tmp_path: Path) -> None:

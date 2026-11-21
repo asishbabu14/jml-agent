@@ -4,9 +4,9 @@ resource "okta_app_bookmark" "slack" {
   status = "ACTIVE"
 }
 
-resource "okta_app_bookmark" "notion" {
-  label  = "Notion (lab bookmark)"
-  url    = "https://notion.lab.example"
+resource "okta_app_bookmark" "wiki" {
+  label  = "Wiki (lab bookmark)"
+  url    = "https://wiki.lab.example"
   status = "ACTIVE"
 }
 
@@ -30,17 +30,17 @@ resource "okta_app_group_assignment" "slack_security" {
   group_id = okta_group.dept_security.id
 }
 
-resource "okta_app_group_assignment" "notion_engineering" {
-  app_id   = okta_app_bookmark.notion.id
+resource "okta_app_group_assignment" "wiki_engineering" {
+  app_id   = okta_app_bookmark.wiki.id
   group_id = okta_group.dept_engineering.id
 }
 
-resource "okta_app_group_assignment" "notion_it" {
-  app_id   = okta_app_bookmark.notion.id
+resource "okta_app_group_assignment" "wiki_it" {
+  app_id   = okta_app_bookmark.wiki.id
   group_id = okta_group.dept_it.id
 }
 
-resource "okta_app_group_assignment" "notion_security" {
-  app_id   = okta_app_bookmark.notion.id
+resource "okta_app_group_assignment" "wiki_security" {
+  app_id   = okta_app_bookmark.wiki.id
   group_id = okta_group.dept_security.id
 }

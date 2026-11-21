@@ -38,9 +38,9 @@ resource "okta_group" "app_slack" {
   description = "Synthetic lab group for the Slack bookmark app."
 }
 
-resource "okta_group" "app_notion" {
-  name        = "app-notion"
-  description = "Synthetic lab group for the Notion bookmark app."
+resource "okta_group" "app_wiki" {
+  name        = "app-wiki"
+  description = "Synthetic lab group for the wiki bookmark app."
 }
 
 resource "okta_group" "phi_access" {

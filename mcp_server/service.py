@@ -5,7 +5,7 @@ from __future__ import annotations
 from typing import Any
 
 from mcp_server.adapters.gws_mock import GoogleWorkspaceMock
-from mcp_server.adapters.mdm_mock import DeviceMock
+from mcp_server.adapters.mdm_mock import DeviceInventoryMock
 from mcp_server.adapters.okta_live import OktaLiveError
 from mcp_server.adapters.tickets import TicketStore
 from mcp_server.audit.log import AuditLog
@@ -39,7 +39,7 @@ class ITOpsService:
         audit: AuditLog,
         okta: Any,
         gws: GoogleWorkspaceMock,
-        devices: DeviceMock,
+        devices: DeviceInventoryMock,
         tickets: TicketStore,
     ) -> None:
         self.settings = settings
