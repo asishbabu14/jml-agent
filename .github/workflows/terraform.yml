@@ -1,0 +1,44 @@
+name: Terraform
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: terraform/okta
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.8"
+      - name: Format
+        run: terraform fmt -check -recursive
+      - name: Init
+        run: terraform init -backend=false -input=false
+      - name: Validate
+        run: terraform validate
+      - name: Plan only when credentials exist
+        env:
+          OKTA_ORG_NAME: ${{ secrets.OKTA_ORG_NAME }}
+          OKTA_BASE_URL: ${{ secrets.OKTA_BASE_URL }}
+          OKTA_CLIENT_ID: ${{ secrets.OKTA_CLIENT_ID }}
+          OKTA_PRIVATE_KEY: ${{ secrets.OKTA_PRIVATE_KEY }}
+        run: |
+          if [ -z "${OKTA_CLIENT_ID}" ] || [ -z "${OKTA_PRIVATE_KEY}" ] || [ -z "${OKTA_ORG_NAME}" ]; then
+            echo "Okta credentials are not configured. Skipping plan."
+            echo "This workflow stops after plan."
+            exit 0
+          fi
+          export TF_VAR_okta_org_name="${OKTA_ORG_NAME}"
+          export TF_VAR_okta_base_url="${OKTA_BASE_URL:-okta.com}"
+          export TF_VAR_okta_client_id="${OKTA_CLIENT_ID}"
+          export TF_VAR_okta_private_key="${OKTA_PRIVATE_KEY}"
+          terraform plan -input=false -lock=false
+          echo "Plan finished. This workflow stops after plan."

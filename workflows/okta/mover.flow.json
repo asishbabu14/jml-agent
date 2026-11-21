@@ -1,0 +1,13 @@
+{
+  "name": "lab-mover",
+  "kind": "lab-stand-in",
+  "note": "Not an export from an Okta org. Rebuild in Okta Workflows if you connect a tenant later.",
+  "trigger": "HR row status mover",
+  "steps": [
+    {"id": "read_hr", "action": "Read the new department and title"},
+    {"id": "request_approval", "action": "Open an IT approval and stop"},
+    {"id": "update_profile", "action": "Update department and title after approval"},
+    {"id": "resync_groups", "action": "Drop old dept and role groups, add the new ones, keep an existing phi-* grant"},
+    {"id": "audit", "action": "Append the hash-chained audit record"}
+  ]
+}

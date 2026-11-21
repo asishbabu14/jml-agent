@@ -1,0 +1,8 @@
+employee_id,email,first_name,last_name,department,title,manager_email,status,start_date,last_day,new_department,new_title
+E1001,casey.nguyen@lab.example,Casey,Nguyen,Engineering,Software Engineer,morgan.lee@lab.example,active,2024-03-01,,,
+E1002,riley.chen@lab.example,Riley,Chen,Engineering,Software Engineer,morgan.lee@lab.example,active,2023-11-15,,,
+E1003,jordan.kim@lab.example,Jordan,Kim,Engineering,Software Engineer,morgan.lee@lab.example,hired,2026-12-01,,,
+E1004,taylor.brooks@lab.example,Taylor,Brooks,IT,IT Analyst,sam.okafor@lab.example,leaving,2022-06-01,2026-11-21,,
+E1005,morgan.lee@lab.example,Morgan,Lee,Engineering,Engineering Manager,sam.okafor@lab.example,active,2021-01-15,,,
+E1006,sam.okafor@lab.example,Sam,Okafor,Security,Security Partner,morgan.lee@lab.example,active,2020-08-01,,,
+E1007,quinn.diaz@lab.example,Quinn,Diaz,Clinical Operations,Operations Coordinator,morgan.lee@lab.example,mover,2022-02-02,,Engineering,Software Engineer

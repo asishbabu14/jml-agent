@@ -1,0 +1,68 @@
+[
+  {
+    "id": "dev-mac-1001",
+    "email": "casey.nguyen@lab.example",
+    "platform": "macOS",
+    "os_version": "15.1",
+    "filevault": true,
+    "edr_status": "protected",
+    "last_checkin": "2026-11-20T15:00:00+00:00",
+    "compliant": true,
+    "assignment_status": "assigned"
+  },
+  {
+    "id": "dev-mac-1002",
+    "email": "riley.chen@lab.example",
+    "platform": "macOS",
+    "os_version": "14.6",
+    "filevault": false,
+    "edr_status": "missing",
+    "last_checkin": "2026-11-18T11:00:00+00:00",
+    "compliant": false,
+    "assignment_status": "assigned"
+  },
+  {
+    "id": "dev-mac-1004",
+    "email": "taylor.brooks@lab.example",
+    "platform": "macOS",
+    "os_version": "15.1",
+    "filevault": true,
+    "edr_status": "protected",
+    "last_checkin": "2026-11-20T09:00:00+00:00",
+    "compliant": true,
+    "assignment_status": "assigned"
+  },
+  {
+    "id": "dev-mac-1005",
+    "email": "morgan.lee@lab.example",
+    "platform": "macOS",
+    "os_version": "15.1",
+    "filevault": true,
+    "edr_status": "protected",
+    "last_checkin": "2026-11-20T16:30:00+00:00",
+    "compliant": true,
+    "assignment_status": "assigned"
+  },
+  {
+    "id": "dev-mac-1006",
+    "email": "sam.okafor@lab.example",
+    "platform": "macOS",
+    "os_version": "15.1",
+    "filevault": true,
+    "edr_status": "protected",
+    "last_checkin": "2026-11-19T18:00:00+00:00",
+    "compliant": true,
+    "assignment_status": "assigned"
+  },
+  {
+    "id": "dev-mac-1007",
+    "email": "quinn.diaz@lab.example",
+    "platform": "macOS",
+    "os_version": "15.0",
+    "filevault": true,
+    "edr_status": "protected",
+    "last_checkin": "2026-11-20T12:00:00+00:00",
+    "compliant": true,
+    "assignment_status": "assigned"
+  }
+]

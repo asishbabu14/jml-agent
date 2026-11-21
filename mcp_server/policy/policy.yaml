@@ -1,0 +1,110 @@
+# Lab policy. Effects are allow, needs_approval, or deny.
+# Unknown tools are denied. phi-* is a label, not a data store.
+
+version: 1
+default_effect: deny
+
+approver_roles:
+  it:
+    - morgan.lee@lab.example
+  security:
+    - sam.okafor@lab.example
+  manager:
+    - morgan.lee@lab.example
+
+tools:
+  lookup_user:
+    effect: allow
+    classification: read
+    okta_scopes: [okta.users.read]
+    reason: Read-only directory lookup returns allow-listed fields.
+
+  list_user_groups:
+    effect: allow
+    classification: read
+    okta_scopes: [okta.users.read, okta.groups.read]
+    reason: Read-only group membership.
+
+  check_device_posture:
+    effect: allow
+    classification: read
+    okta_scopes: []
+    reason: Read-only device posture from the labelled mock inventory.
+
+  search_runbooks:
+    effect: allow
+    classification: read
+    okta_scopes: []
+    reason: Search the local runbook files.
+
+  create_ticket:
+    effect: allow
+    classification: write
+    okta_scopes: []
+    reason: Opening a local ticket does not change identity systems.
+
+  request_group_access:
+    effect: needs_approval
+    classification: write
+    okta_scopes: [okta.groups.manage]
+    approval:
+      roles: [it]
+      count: 1
+    reason: Group changes wait for the IT approver.
+    constraints:
+      - when:
+          group_prefix: phi-
+        effect: needs_approval
+        roles: [manager, security]
+        count: 2
+        distinct_roles: true
+        distinct_approvers: true
+        reason: phi-* groups stay closed unless a manager and a security partner both approve.
+
+  reset_mfa:
+    effect: needs_approval
+    classification: write
+    okta_scopes: [okta.users.manage]
+    approval:
+      roles: [it]
+      count: 1
+      identity_verification: true
+    reason: MFA reset waits for IT and an out-of-band identity check.
+
+  run_joiner:
+    effect: needs_approval
+    classification: write
+    okta_scopes: [okta.users.manage, okta.groups.manage]
+    approval:
+      roles: [it]
+      count: 1
+    reason: A joiner waits for IT before any account is created.
+
+  run_mover:
+    effect: needs_approval
+    classification: write
+    okta_scopes: [okta.users.manage, okta.groups.manage]
+    approval:
+      roles: [it]
+      count: 1
+    reason: A mover waits for IT before groups change.
+
+  run_leaver:
+    effect: needs_approval
+    classification: write
+    okta_scopes: [okta.users.manage, okta.groups.manage, okta.sessions.manage]
+    approval:
+      roles: [it]
+      count: 1
+    reason: A leaver waits for IT before access is removed.
+
+  suspend_user:
+    effect: needs_approval
+    classification: destructive
+    okta_scopes: [okta.users.manage, okta.sessions.manage]
+    approval:
+      roles: [it, security]
+      count: 2
+      distinct_roles: true
+      distinct_approvers: true
+    reason: Suspending an account needs two people, IT and security.
