@@ -4,15 +4,15 @@
 
 JML-Agent is Asish Babu's personal portfolio lab: a small IT help-desk agent for a fake company directory. It exposes a narrow set of identity actions through a Python MCP server, gates every write on a policy file, waits for a person to approve, and writes a hash-chained audit log. Okta and Google Workspace sit behind adapters. The backends that run in this repo are labelled **MOCK**. A live Okta adapter turns on only when three environment variables are set together.
 
-Nothing here is a claim about anyone's job history. The shape of the lab follows a public Senior IT Engineer posting (identity lifecycle, help-desk agents, Terraform). The posting is context for the exercise, not a statement that this code ran in that company.
+Nothing here is a claim about anyone's job history.
 
 Okta publishes an official MCP server ([okta/okta-mcp-server](https://github.com/okta/okta-mcp-server)). This project does not replace it. The point of this repo is the IT-operations layer around a few tools: least privilege, approval outside the model, an audit trail, and a small metrics report.
 
 ## Demo
 
-![Demo GIF placeholder](docs/assets/demo-placeholder.svg)
+![Terminal recording of make demo](docs/demo.gif)
 
-That image is a placeholder. Record a 30–60 second GIF (ask, approval, directory change, audit line) and replace `docs/assets/demo-placeholder.svg`. Until then, the scripted walkthrough is:
+The recording is `make demo`: a synthetic joiner, mover, and leaver, the approval gate, and the audit-chain check. Playback is slowed so the lines stay readable. The command itself finishes in well under a second.
 
 ```bash
 make demo
@@ -144,7 +144,7 @@ python -m metrics.report --audit var/demo/audit.jsonl
 | PHI leakage | Synthetic users only. Outputs are allow-listed. `phi-*` needs two roles. |
 | Audit tampering | Each JSONL line includes the previous SHA-256. `verify_chain` fails closed. |
 
-The longer write-up is [docs/threat-model.md](docs/threat-model.md). Design notes are in [docs/design-decisions.md](docs/design-decisions.md). A lab mapping of access control, audit, and minimum necessary — not a HIPAA or SOC 2 attestation — is in [docs/hipaa-soc2-notes.md](docs/hipaa-soc2-notes.md). A sample AI-use note is in [docs/ai-usage-policy.md](docs/ai-usage-policy.md).
+The longer write-up is [docs/threat-model.md](docs/threat-model.md). Design notes are in [docs/design-decisions.md](docs/design-decisions.md). A lab mapping of access control, audit, and minimum necessary (not a HIPAA or SOC 2 attestation) is in [docs/hipaa-soc2-notes.md](docs/hipaa-soc2-notes.md). A sample AI-use note is in [docs/ai-usage-policy.md](docs/ai-usage-policy.md).
 
 ## Layout
 
@@ -179,6 +179,6 @@ Google Workspace commands that match the mock are listed in [docs/gam-equivalent
 ## What this repo is not
 
 - It is not a production help desk, and it is not deployed for an employer.
-- It does not connect to Iru, Ravenna, ConductorOne, SentinelOne, Notion, or a real Google Workspace tenant. Those names appear only as the shape of a mock or a bookmark URL under `lab.example`.
+- It does not connect to a live Google Workspace tenant, a device-management tenant, or a ticketing product. Those adapters are labelled mocks, and bookmark URLs use `lab.example`.
 - The people in `hris_mock/employees.csv` are invented. `@lab.example` is not a real mailbox.
 - Workflow JSON under `workflows/okta/` is not an export from an Okta org.

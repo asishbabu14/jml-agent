@@ -22,7 +22,7 @@ Okta's API token is a long-lived bearer secret. The live adapter sends `client_c
 
 ## 6. Mock Workspace, mock MDM, mock tickets
 
-A Google Workspace tenant and the commercial IT products named in public job postings are not assumed. The adapters are labelled `MOCK`. GAM commands that correspond to the mock methods are documented beside them and are not executed. Device rows say `MOCK:iru-style`.
+A Google Workspace tenant is not assumed, and commercial IT products are not assumed. The adapters are labelled `MOCK`. GAM commands that correspond to the mock methods are documented beside them and are not executed. Device rows say `MOCK:device-inventory`.
 
 ## 7. Hash-chained JSONL
 

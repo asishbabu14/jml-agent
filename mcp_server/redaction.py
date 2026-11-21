@@ -79,7 +79,7 @@ def device_view(record: dict[str, Any]) -> dict[str, Any]:
     view = allow(record, DEVICE_FIELDS) or {}
     view["filevault"] = bool(view.get("filevault"))
     view["compliant"] = bool(view.get("compliant"))
-    view["source"] = record.get("source") or "MOCK:iru-style"
+    view["source"] = record.get("source") or "MOCK:device-inventory"
     return view
 
 

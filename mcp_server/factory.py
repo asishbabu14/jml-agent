@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from mcp_server.adapters.gws_mock import GoogleWorkspaceMock
-from mcp_server.adapters.mdm_mock import DeviceMock
+from mcp_server.adapters.mdm_mock import DeviceInventoryMock
 from mcp_server.adapters.okta_live import OktaLiveAdapter
 from mcp_server.adapters.okta_mock import OktaMockAdapter
 from mcp_server.adapters.tickets import TicketStore
@@ -35,6 +35,6 @@ def build_service(settings: Settings) -> ITOpsService:
         audit=AuditLog(settings.data_dir / "audit.jsonl"),
         okta=okta,
         gws=GoogleWorkspaceMock(store),
-        devices=DeviceMock(store),
+        devices=DeviceInventoryMock(store),
         tickets=TicketStore(store),
     )

@@ -29,7 +29,7 @@ GROUPS: tuple[Group, ...] = (
     Group("role-it-support", "Role: IT support. Synthetic lab.", "sam.okafor@lab.example"),
     Group("role-manager", "Role: people manager. Synthetic lab.", "sam.okafor@lab.example"),
     Group("app-slack", "Bookmark app group for the lab Slack tile.", "morgan.lee@lab.example"),
-    Group("app-notion", "Bookmark app group for the lab Notion tile.", "morgan.lee@lab.example"),
+    Group("app-wiki", "Bookmark app group for the lab wiki tile.", "morgan.lee@lab.example"),
     Group(
         "phi-access",
         "LABEL ONLY. Not a store of PHI. Never assigned by a group rule.",
@@ -104,5 +104,5 @@ def groups_for(department: str, title: str) -> list[str]:
     elif department == "IT":
         names.append("role-it-support")
     if department in {"Engineering", "IT", "Security"}:
-        names.append("app-notion")
+        names.append("app-wiki")
     return names

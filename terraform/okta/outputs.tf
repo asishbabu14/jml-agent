@@ -9,7 +9,7 @@ output "group_ids" {
     role_it_support   = okta_group.role_it_support.id
     role_manager      = okta_group.role_manager.id
     app_slack         = okta_group.app_slack.id
-    app_notion        = okta_group.app_notion.id
+    app_wiki          = okta_group.app_wiki.id
     phi_access        = okta_group.phi_access.id
   }
 }

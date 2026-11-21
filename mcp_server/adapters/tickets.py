@@ -1,4 +1,4 @@
-"""Local ticket store. Ravenna-shaped fields, not a Ravenna connection."""
+"""Local ticket store. Generic ticket fields."""
 
 from __future__ import annotations
 

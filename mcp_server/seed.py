@@ -61,6 +61,6 @@ def seed(store: Store, hr_csv: Path, devices_path: Path) -> None:
             store.add_membership(email, name)
     devices = json.loads(devices_path.read_text(encoding="utf-8"))
     for device in devices:
-        device["source"] = "MOCK:iru-style"
+        device["source"] = "MOCK:device-inventory"
         store.upsert_device(device)
     store.set_meta("seeded", "1")

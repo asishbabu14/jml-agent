@@ -1,6 +1,6 @@
-"""MOCK device inventory in the shape of an Iru-style posture record.
+"""MOCK device inventory.
 
-This is not a connection to Iru, SentinelOne, or any MDM tenant.
+This is not a connection to an MDM tenant.
 """
 
 from __future__ import annotations
@@ -10,10 +10,10 @@ from typing import Any
 from mcp_server.store import Store, new_id
 
 
-class DeviceMock:
+class DeviceInventoryMock:
     backend_label = "MOCK"
-    backend_name = "IruStyleDeviceMock"
-    source = "MOCK:iru-style"
+    backend_name = "DeviceInventoryMock"
+    source = "MOCK:device-inventory"
 
     def __init__(self, store: Store) -> None:
         self.store = store

@@ -17,8 +17,8 @@ def _build(service: Any, actor: str):
 SPEC = ToolSpec(
     name="check_device_posture",
     description=(
-        "Read device posture from the MOCK Iru-style inventory. "
-        "This is not a live MDM or SentinelOne connection."
+        "Read device posture from the MOCK device inventory. "
+        "This is not a live MDM connection."
     ),
     scopes=(),
     build=_build,

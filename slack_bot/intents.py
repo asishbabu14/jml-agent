@@ -18,7 +18,7 @@ def classify(text: str) -> str:
         return "how_to"
     if "mfa" in lowered or "multi-factor" in lowered or "reset my factor" in lowered:
         return "mfa"
-    if any(word in lowered for word in ("laptop", "device", "filevault", "sentinelone")):
+    if any(word in lowered for word in ("laptop", "device", "filevault")):
         return "device"
     if any(word in lowered for word in ("offboard", "last day", "leaver", "leaving")):
         return "leaver"
@@ -52,7 +52,7 @@ def handle_message(service: ITOpsService, text: str, requester: str) -> dict[str
             return {
                 "intent": intent,
                 "result": None,
-                "reply": "Tell me which catalog group, for example app-notion.",
+                "reply": "Tell me which catalog group, for example app-wiki.",
             }
         result = service.request_group_access(email, group, reason=text[:500], actor=requester)
         return {"intent": intent, "result": result, "reply": _reply_pending(result, f"access to {group}")}

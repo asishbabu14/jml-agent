@@ -26,7 +26,7 @@ def test_published_effects() -> None:
         "suspend_user": "needs_approval",
     }
     for tool, effect in expected.items():
-        assert policy.evaluate(tool, {"group": "app-notion"}).effect == effect
+        assert policy.evaluate(tool, {"group": "app-wiki"}).effect == effect
 
 
 def test_phi_group_needs_manager_and_security() -> None:

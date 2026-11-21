@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540">
-  <rect width="960" height="540" fill="#f4f1ea"/>
-  <rect x="48" y="48" width="864" height="444" fill="#ffffff" stroke="#1f2933" stroke-width="2"/>
-  <text x="80" y="120" font-family="Georgia, serif" font-size="32" fill="#1f2933">Demo GIF placeholder</text>
-  <text x="80" y="180" font-family="Georgia, serif" font-size="20" fill="#334e68">Record a 30 to 60 second walkthrough and replace this file.</text>
-  <text x="80" y="240" font-family="Georgia, serif" font-size="18" fill="#334e68">Suggested frames: help-desk ask, approval, directory change, audit line.</text>
-  <text x="80" y="300" font-family="Georgia, serif" font-size="18" fill="#334e68">Until then, run: make demo</text>
-</svg>
