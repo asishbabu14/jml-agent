@@ -1,0 +1,17 @@
+{
+  "name": "lab-leaver",
+  "kind": "lab-stand-in",
+  "note": "Not an export from an Okta org. Same order the leaver executor uses.",
+  "trigger": "HR row status leaving",
+  "steps": [
+    {"id": "request_approval", "action": "Open an IT approval and stop"},
+    {"id": "clear_sessions", "action": "Clear sessions"},
+    {"id": "remove_groups", "action": "Remove catalog groups"},
+    {"id": "deactivate", "action": "Deactivate the directory user"},
+    {"id": "transfer_drive", "action": "MOCK Google Drive transfer to the manager"},
+    {"id": "suspend_google", "action": "Suspend the MOCK Google Workspace user"},
+    {"id": "release_device", "action": "Mark the mock device pending retrieval"},
+    {"id": "notify", "action": "Record that a manager notice was not sent"},
+    {"id": "audit", "action": "Append the hash-chained audit record"}
+  ]
+}

@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jml-agent"
+version = "0.1.0"
+description = "Policy-gated IT help-desk MCP server for a synthetic Okta and Google Workspace lab."
+readme = "README.md"
+requires-python = ">=3.12"
+license = {text = "MIT"}
+authors = [{name = "Asish Babu"}]
+dependencies = [
+  "mcp>=1.9",
+  "httpx>=0.27",
+  "pyjwt>=2.9",
+  "cryptography>=43",
+  "pyyaml>=6",
+]
+
+[project.optional-dependencies]
+slack = ["slack-bolt>=1.21"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+jml-agent = "mcp_server.server:main"
+jml-demo = "mcp_server.demo:main"
+jml-metrics = "metrics.report:main"
+jml-audit-verify = "mcp_server.audit.verify_chain:main"
+
+[tool.setuptools.packages.find]
+include = ["mcp_server*", "slack_bot*", "metrics*", "hris_mock*"]
+
+[tool.setuptools.package-data]
+mcp_server = ["policy/*.yaml", "fixtures/*.json"]
+hris_mock = ["*.csv"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+src = ["mcp_server", "slack_bot", "metrics", "hris_mock", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "W"]

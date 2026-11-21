@@ -1,0 +1,15 @@
+{
+  "name": "lab-joiner",
+  "kind": "lab-stand-in",
+  "note": "Not an export from an Okta org. The Python lifecycle runner follows these steps. Rebuild them in Okta Workflows if you have an Integrator Free Plan.",
+  "trigger": "HR row status hired",
+  "steps": [
+    {"id": "read_hr", "action": "Load the employee from the synthetic CSV"},
+    {"id": "request_approval", "action": "Open an IT approval and stop"},
+    {"id": "provision_okta", "action": "Create the directory user after approval"},
+    {"id": "assign_groups", "action": "Add dept, role, and app groups. Never phi-*"},
+    {"id": "provision_google", "action": "Ensure the MOCK Google Workspace user"},
+    {"id": "device_placeholder", "action": "Mark the laptop pending enrollment in the MOCK inventory"},
+    {"id": "audit", "action": "Append the hash-chained audit record"}
+  ]
+}

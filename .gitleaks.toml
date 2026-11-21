@@ -1,0 +1,10 @@
+title = "jml-agent"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Example env file has empty values. Docs discuss secret handling without embedding secrets."
+paths = [
+  '''(?i)\.env\.example$''',
+]
