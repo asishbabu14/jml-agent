@@ -4,7 +4,6 @@
 
 JML-Agent is Asish Babu's personal portfolio lab: a small IT help-desk agent for a fake company directory. It exposes a narrow set of identity actions through a Python MCP server, gates every write on a policy file, waits for a person to approve, and writes a hash-chained audit log. Okta and Google Workspace sit behind adapters. The backends that run in this repo are labelled **MOCK**. A live Okta adapter turns on only when three environment variables are set together.
 
-Nothing here is a claim about anyone's job history.
 
 Okta publishes an official MCP server ([okta/okta-mcp-server](https://github.com/okta/okta-mcp-server)). This project does not replace it. The point of this repo is the IT-operations layer around a few tools: least privilege, approval outside the model, an audit trail, and a small metrics report.
 
